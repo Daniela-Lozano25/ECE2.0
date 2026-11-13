@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de Conocimiento Comercial</title>
+<meta name="description" content="Repositorio de consulta para Desarrollo Comercial y Trade Marketing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14213d; --ink-soft:#4a5468; --paper:#f4f5f7; --white:#fff;
+  --line:#d9dce3; --navy:#14213d; --teal:#1f5a56; --accent:var(--navy);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:2.5rem 1.25rem 4rem;outline:none}
+a{color:inherit}
+:focus-visible{outline:3px solid #7a8fb8;outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;letter-spacing:.005em}
+
+.topbar{display:flex;flex-wrap:wrap;gap:.5rem 2rem;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:var(--navy);color:#fff}
+.brand{font-family:var(--serif);font-size:1.5rem;font-weight:600;text-decoration:none}
+.topbar nav{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem}
+.topbar nav a{text-decoration:none;font-size:.95rem;padding:.25rem 0;border-bottom:1px solid transparent;opacity:.85}
+.topbar nav a:hover,.topbar nav a.on{opacity:1;border-color:#fff}
+
+.hero{padding:3rem 0 2.5rem;max-width:44rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);margin-bottom:1rem}
+.hero p{font-size:1.15rem;color:var(--ink-soft)}
+
+.areas{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.area{background:var(--white);border:1px solid var(--line);border-left:6px solid var(--c);padding:2rem 1.75rem;display:flex;flex-direction:column;gap:1rem}
+.area h2{font-size:2rem;color:var(--c)}
+.area p{color:var(--ink-soft);flex:1}
+.area.comercial{--c:var(--navy)} .area.trade{--c:var(--teal)}
+
+.btn{display:inline-block;align-self:flex-start;font:inherit;font-weight:600;font-size:1rem;cursor:pointer;text-decoration:none;
+  background:var(--c,var(--accent));color:#fff;border:1px solid var(--c,var(--accent));padding:.75rem 1.5rem;transition:background .2s,color .2s}
+.btn:hover{background:#fff;color:var(--c,var(--accent))}
+.btn.outline{background:#fff;color:var(--c,var(--accent))}
+.btn.outline:hover,.btn.outline[aria-expanded="true"]{background:var(--c,var(--accent));color:#fff}
+
+.page{--c:var(--navy)} .page.trade{--c:var(--teal)}
+.crumb{font-size:.95rem;color:var(--ink-soft);margin-bottom:1.5rem}
+.crumb a{text-decoration:none;border-bottom:1px solid var(--line)}
+.page h1{font-size:clamp(2.2rem,5vw,3.25rem);color:var(--c);margin-bottom:.75rem}
+.page .lead{max-width:42rem;color:var(--ink-soft);font-size:1.1rem;margin-bottom:2rem}
+
+.modules{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));margin-top:2rem}
+.modules[hidden]{display:none}
+.mod{display:block;text-decoration:none;background:var(--white);border:1px solid var(--line);border-top:4px solid var(--c);padding:1.5rem;transition:transform .2s,box-shadow .2s;animation:reveal .3s ease both}
+.mod:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(20,33,61,.12)}
+.mod h3{font-size:1.5rem;margin-bottom:.4rem;color:var(--c)}
+.mod p{color:var(--ink-soft);font-size:.98rem}
+@keyframes reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.acc{margin-top:1.5rem;border-top:1px solid var(--line)}
+.acc details{border-bottom:1px solid var(--line);background:var(--white)}
+.acc summary{cursor:pointer;list-style:none;padding:1.15rem 1.25rem;font-weight:600;display:flex;justify-content:space-between;gap:1rem}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:'+';font-size:1.5rem;line-height:1;color:var(--c);transition:transform .2s}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc details>div{padding:0 1.25rem 1.25rem;color:var(--ink-soft);max-width:46rem}
+.footer{text-align:center;padding:1.5rem;font-size:.9rem;color:var(--ink-soft);border-top:1px solid var(--line)}
+
+@media (max-width:560px){.area{padding:1.5rem 1.25rem}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#/">Centro de Conocimiento</a>
+  <nav aria-label="Principal">
+    <a href="#/">Inicio</a>
+    <a href="#/comercial">Desarrollo Comercial</a>
+    <a href="#/trade">Trade Marketing</a>
+  </nav>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer class="footer">Repositorio interno de consulta. Versión inicial.</footer>
+<script>
+// Contenido editable. Para agregar temas, módulos o preguntas, modifique este archivo.
+const DATA = {
+  comercial: {
+    titulo: "Desarrollo Comercial",
+    descripcion: "Técnicas y criterios para fortalecer la gestión de ventas y la relación con el cliente.",
+    modulos: [
+      { id: "tecnica-ventas", titulo: "Técnica de ventas", resumen: "Pasos de una visita efectiva, de la preparación al seguimiento.",
+        items: [
+          { q: "¿Cómo preparo una visita de ventas?", a: "Revise el historial del cliente, defina el objetivo de la visita y lleve la información de producto y precios que necesitará." },
+          { q: "¿Cómo detecto las necesidades del cliente?", a: "Haga preguntas abiertas, escuche con atención y confirme lo entendido antes de proponer una solución." },
+          { q: "¿Cómo presento una propuesta de valor?", a: "Conecte cada característica del producto con un beneficio concreto para el negocio del cliente." }
+        ] },
+      { id: "cierres", titulo: "Cierres comerciales", resumen: "Cómo concretar acuerdos de forma natural y profesional.",
+        items: [
+          { q: "¿Cuándo es el momento de cerrar?", a: "Cuando el cliente muestra señales de compra: pregunta por condiciones, plazos o cantidades." },
+          { q: "¿Qué tipos de cierre existen?", a: "Cierre directo, por alternativas, por resumen de beneficios y por siguiente paso acordado." },
+          { q: "¿Qué hago si el cliente no decide hoy?", a: "Acuerde una fecha concreta de seguimiento y deje por escrito los puntos pendientes." }
+        ] },
+      { id: "objeciones", titulo: "Manejo de objeciones", resumen: "Respuestas para dudas frecuentes sobre precio, tiempo y competencia.",
+        items: [
+          { q: "¿Cómo respondo a «está muy caro»?", a: "Pregunte con qué lo compara, muestre el valor total y ofrezca opciones de presentación o volumen." },
+          { q: "¿Y si el cliente dice «ya tengo proveedor»?", a: "Reconozca la relación existente y proponga complementar, no reemplazar, con un beneficio claro." },
+          { q: "¿Cómo manejo «no tengo espacio»?", a: "Muestre la rotación del producto y proponga una ubicación o formato que ocupe menos espacio." }
+        ] },
+      { id: "actitud", titulo: "Actitud comercial", resumen: "Hábitos y comportamientos que construyen confianza.",
+        items: [
+          { q: "¿Qué actitudes generan confianza?", a: "Puntualidad, honestidad, cumplimiento de lo prometido y trato respetuoso en cada visita." },
+          { q: "¿Cómo mantengo la motivación?", a: "Defina metas semanales pequeñas, celebre avances y aprenda de cada visita sin cierre." },
+          { q: "¿Cómo manejo un cliente difícil?", a: "Mantenga la calma, escuche sin interrumpir y enfóquese en soluciones, no en culpables." }
+        ] }
+    ]
+  },
+  trade: {
+    titulo: "Trade Marketing",
+    descripcion: "Guías para la ejecución en punto de venta: exhibición, documentación y relacionamiento.",
+    faq: true,
+    modulos: [
+      { id: "abc", titulo: "ABC del mercaderista", resumen: "Funciones básicas y rutina de trabajo en el punto de venta.",
+        items: [
+          { q: "¿Cuál es la rutina básica de una visita?", a: "Saludar, revisar inventario y precios, ordenar la exhibición, retirar producto vencido y registrar la visita." },
+          { q: "¿Qué debo verificar al llegar?", a: "Disponibilidad de producto, fechas de vencimiento, estado de la góndola y presencia de material publicitario." },
+          { q: "¿Cómo reporto novedades?", a: "Registre la novedad con foto y descripción breve, y avise a su supervisor el mismo día." }
+        ] },
+      { id: "documentos", titulo: "Documentos infaltables", resumen: "Formatos y soportes que debe llevar y diligenciar.",
+        items: [
+          { q: "¿Qué documentos debo llevar siempre?", a: "Carné vigente, formato de visita, planograma de la cadena y listado de precios actualizado." },
+          { q: "¿Cómo se diligencia el formato de visita?", a: "Con fecha, hora de entrada y salida, evidencia fotográfica y firma o sello del punto de venta." },
+          { q: "¿Cuánto tiempo guardo los soportes?", a: "Conserve los soportes durante el periodo que defina la compañía y entréguelos en el cierre acordado." }
+        ] },
+      { id: "planogramas", titulo: "Planogramas", resumen: "Cómo leer e implementar la distribución de producto en góndola.",
+        items: [
+          { q: "¿Qué es un planograma?", a: "Es el esquema que indica la ubicación, el orden y la cantidad de frentes de cada producto en el estante." },
+          { q: "¿Cómo lo implemento correctamente?", a: "Siga los niveles, respete los frentes asignados y verifique con foto antes y después." },
+          { q: "¿Qué hago si el espacio no coincide?", a: "Adapte lo más cercano al planograma y reporte la diferencia con evidencia." }
+        ] },
+      { id: "relacionamiento", titulo: "Relacionamiento", resumen: "Cómo construir una buena relación con el personal del punto de venta.",
+        items: [
+          { q: "¿Con quién debo relacionarme en la tienda?", a: "Con el administrador, jefes de categoría, surtidores y personal de bodega." },
+          { q: "¿Cómo logro apoyo para mi exhibición?", a: "Sea cordial, cumpla acuerdos, ayude a mantener el orden y comunique los beneficios para la tienda." },
+          { q: "¿Cómo manejo un desacuerdo?", a: "Escuche, explique con calma el acuerdo comercial vigente y escale a su supervisor si es necesario." }
+        ] },
+      { id: "exhibiciones", titulo: "Exhibiciones adicionales", resumen: "Puntos extra de exhibición: tipos, ubicación y negociación.",
+        items: [
+          { q: "¿Qué tipos de exhibición adicional hay?", a: "Cabeceras de góndola, islas, puntas, exhibidores de caja y material colgante." },
+          { q: "¿Dónde se ubican mejor?", a: "En zonas de alto tráfico: entradas, pasillos centrales, cercanía a cajas y categorías complementarias." },
+          { q: "¿Cómo las negocio?", a: "Presente el potencial de ventas, el acuerdo comercial y el tiempo de permanencia propuesto." }
+        ] },
+      { id: "participacion", titulo: "Porcentajes de participación", resumen: "Cómo medir y mejorar la participación en el anaquel.",
+        items: [
+          { q: "¿Qué es la participación en góndola?", a: "Es el porcentaje de espacio o frentes de nuestra marca frente al total de la categoría." },
+          { q: "¿Cómo se calcula?", a: "Frentes de nuestros productos dividido entre el total de frentes de la categoría, por cien." },
+          { q: "¿Cómo la mejoro?", a: "Negociando más frentes, corrigiendo la ubicación y evitando agotados en los productos clave." }
+        ] }
+    ]
+  }
+};
+
+const app = document.getElementById('app');
+const links = document.querySelectorAll('.topbar nav a');
+
+function home() {
+  const card = (k, cls) => `
+    <article class="area ${cls}">
+      <h2>${DATA[k].titulo}</h2>
+      <p>${DATA[k].descripcion}</p>
+      <a class="btn" href="#/${k}">Consultar</a>
+    </article>`;
+  return `
+    <section class="hero">
+      <h1>Todo lo que necesita su equipo, en un solo lugar.</h1>
+      <p>Elija un área para consultar guías, procedimientos y respuestas a las preguntas más frecuentes.</p>
+    </section>
+    <section class="areas">${card('comercial','comercial')}${card('trade','trade')}</section>`;
+}
+
+function modCards(k, open) {
+  return DATA[k].modulos.map(m => `
+    <a class="mod" href="#/${k}/${m.id}">
+      <h3>${m.titulo}</h3><p>${m.resumen}</p>
+    </a>`).join('');
+}
+
+function area(k) {
+  const a = DATA[k];
+  const faq = a.faq
+    ? `<button class="btn outline" id="faqBtn" aria-expanded="false" aria-controls="mods">Preguntas frecuentes</button>
+       <div class="modules" id="mods" hidden>${modCards(k)}</div>`
+    : `<div class="modules" id="mods">${modCards(k)}</div>`;
+  return `
+    <section class="page ${k}">
+      <p class="crumb"><a href="#/">Inicio</a> / ${a.titulo}</p>
+      <h1>${a.titulo}</h1>
+      <p class="lead">${a.descripcion}</p>
+      ${faq}
+    </section>`;
+}
+
+function modulo(k, id) {
+  const a = DATA[k], m = a.modulos.find(x => x.id === id);
+  if (!m) return notFound();
+  return `
+    <section class="page ${k}">
+      <p class="crumb"><a href="#/">Inicio</a> / <a href="#/${k}">${a.titulo}</a> / ${m.titulo}</p>
+      <h1>${m.titulo}</h1>
+      <p class="lead">${m.resumen}</p>
+      <div class="acc">
+        ${m.items.map(i => `<details><summary>${i.q}</summary><div>${i.a}</div></details>`).join('')}
+      </div>
+    </section>`;
+}
+
+function notFound() {
+  return `<section class="hero"><h1>No encontramos esa página.</h1><p><a href="#/">Volver al inicio</a></p></section>`;
+}
+
+function render() {
+  const [, k, id] = (location.hash || '#/').split('/');
+  let html;
+  if (!k) html = home();
+  else if (DATA[k] && id) html = modulo(k, id);
+  else if (DATA[k]) html = area(k);
+  else html = notFound();
+  app.innerHTML = html;
+  links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === `#/${k || ''}`));
+  const btn = document.getElementById('faqBtn');
+  if (btn) btn.addEventListener('click', () => {
+    const box = document.getElementById('mods');
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    box.hidden = open;
+  });
+  window.scrollTo(0, 0);
+  app.focus({ preventScroll: true });
+}
+
+window.addEventListener('hashchange', render);
+render();
+
+</script>
+</body>
+</html>
